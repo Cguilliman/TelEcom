@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+
 import environ
 
-env = environ.Env(DEBUG=(bool, False),)
+
+env = environ.Env(
+    DEBUG=(bool, False),
+)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,9 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "rest_framework",
-
     "apps.catalog",
 ]
 
@@ -83,9 +85,9 @@ WSGI_APPLICATION = "app.wsgi.application"
 
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db('DJANGO_DB_URL')
+    "default": env.db("DJANGO_DB_URL")
 }
-DATABASES['default']['CONN_MAX_AGE'] = env.int('CONN_MAX_AGE', default=0)
+DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=0)
 
 
 # Password validation

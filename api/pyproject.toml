@@ -1,3 +1,22 @@
+[tool.black]
+line-length = 120
+target-version = ['py37', 'py38']
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.env
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
 [tool.poetry]
 name = "telecom"
 version = "0.1.0"

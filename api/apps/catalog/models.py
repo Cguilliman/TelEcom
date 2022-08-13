@@ -8,9 +8,7 @@ class Catalog(models.Model):
         verbose_name=_("Title"),
         max_length=255,
     )
-    owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL, verbose_name=_("Owner"), on_delete=models.CASCADE
-    )
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("Owner"), on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("Catalog")
@@ -25,9 +23,7 @@ class Attribute(models.Model):
         verbose_name=_("Name"),
         max_length=255,
     )
-    catalog = models.ForeignKey(
-        "catalog.Catalog", verbose_name=_("Catalog"), on_delete=models.CASCADE
-    )
+    catalog = models.ForeignKey("catalog.Catalog", verbose_name=_("Catalog"), on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("Attribute")
@@ -39,9 +35,7 @@ class Attribute(models.Model):
 
 class Asset(models.Model):
     title = models.CharField(verbose_name=_("Title"), max_length=255)
-    catalog = models.ForeignKey(
-        "catalog.Catalog", verbose_name=_("Catalog"), on_delete=models.CASCADE
-    )
+    catalog = models.ForeignKey("catalog.Catalog", verbose_name=_("Catalog"), on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("Asset")
@@ -53,12 +47,8 @@ class Asset(models.Model):
 
 class AttributeValue(models.Model):
     value = models.TextField(verbose_name=_("Value"))
-    attribute = models.ForeignKey(
-        "catalog.Attribute", verbose_name=_("Attribute"), on_delete=models.CASCADE
-    )
-    asset = models.ForeignKey(
-        "catalog.Asset", verbose_name=_("Asset"), on_delete=models.CASCADE
-    )
+    attribute = models.ForeignKey("catalog.Attribute", verbose_name=_("Attribute"), on_delete=models.CASCADE)
+    asset = models.ForeignKey("catalog.Asset", verbose_name=_("Asset"), on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("Attribute value")
