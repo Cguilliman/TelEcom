@@ -1,0 +1,25 @@
+FROM python:3.10
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install "poetry==1.1.13"
+
+WORKDIR /src
+
+COPY poetry.lock pyproject.toml /src/
+RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi
+COPY . /src
+
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+#docker build -f Dockerfile-production -t telecom:v1 --platform=linux/amd64 .
+#docker tag 47a8f6533c31 685183426719.dkr.ecr.eu-central-1.amazonaws.com/telecom
+#docker push 685183426719.dkr.ecr.eu-central-1.amazonaws.com/telecom
+#aws ecr get-login-password --profile cguilliman | docker login --username AWS --password-stdin 685183426719.dkr.ecr.eu-central-1.amazonaws.com
+#docker push 685183426719.dkr.ecr.eu-central-1.amazonaws.com/telecom
+#685183426719.dkr.ecr.eu-central-1.amazonaws.com/telecom

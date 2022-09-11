@@ -36,7 +36,11 @@ services:
       - web-static:/usr/src/app/static
     env_file: .env
     environment:
-      - DJANGO_DB_URL=psql://postgres:postgres@postgres:5432/db
+      - DATABASE_NAME=db
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
 
 volumes:
   web-django:

@@ -33,7 +33,7 @@ SECRET_KEY = "django-insecure-9^_p7gjbzpytc7=@*ke$)fqd+^n(#7#d4=5a4vkn3h8zbpir**
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -85,9 +85,16 @@ WSGI_APPLICATION = "app.wsgi.application"
 
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    "default": env.db("DJANGO_DB_URL")
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env.str("DATABASE_NAME"),
+        'USER': env.str("DATABASE_USER"),
+        'PASSWORD': env.str("DATABASE_PASSWORD"),
+        'HOST': env.str("DATABASE_HOST"),
+        'PORT': env.str("DATABASE_PORT"),
+        'CONN_MAX_AGE': env.int("CONN_MAX_AGE", default=0),
+    }
 }
-DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=0)
 
 
 # Password validation
