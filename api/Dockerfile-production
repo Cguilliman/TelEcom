@@ -20,6 +20,10 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 #docker build -f Dockerfile-production -t telecom:v1 --platform=linux/amd64 .
 #docker tag 47a8f6533c31 685183426719.dkr.ecr.eu-central-1.amazonaws.com/telecom
 #docker push 685183426719.dkr.ecr.eu-central-1.amazonaws.com/telecom
-#aws ecr get-login-password --profile cguilliman | docker login --username AWS --password-stdin 685183426719.dkr.ecr.eu-central-1.amazonaws.com
+#t 685183426719.dkr.ecr.eu-central-1.amazonaws.com
 #docker push 685183426719.dkr.ecr.eu-central-1.amazonaws.com/telecom
 #685183426719.dkr.ecr.eu-central-1.amazonaws.com/telecom
+
+#TF_LOG
+
+#docker build -f api/Dockerfile -t 685183426719.dkr.ecr.eu-central-1.amazonaws.com/telecom-api --platform=linux/amd64 api

@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from ..models import Asset, Attribute, AttributeValue, Catalog
+from apps.catalog.contrig.catalog import send_catalog_update
 
 
 class CatalogSerializer(serializers.ModelSerializer):
@@ -10,4 +11,6 @@ class CatalogSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data["owner"] = self.context.get("request").user
-        return super().create(validated_data)
+        catalog = super().create(validated_data)
+        send_catalog_update(catalog)
+        return catalog

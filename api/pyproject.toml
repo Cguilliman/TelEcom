@@ -24,7 +24,7 @@ description = ""
 authors = ["Ihor <cguilliman@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11.6"
 Django = "^4.1"
 djangorestframework = "^3.13.1"
 black = "^22.6.0"
@@ -32,9 +32,11 @@ isort = "^5.10.1"
 invoke = "^1.7.1"
 django-environ = "^0.9.0"
 psycopg2-binary = "^2.9.3"
-
-[tool.poetry.dev-dependencies]
-pytest = "^5.2"
+boto3 = "^1.24.70"
+click = "^8.1.3"
+pytest-django = "^4.5.2"
+pytest = "^7.1.3"
+kafka-python = "^2.0.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

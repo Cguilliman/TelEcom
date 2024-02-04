@@ -2,3 +2,6 @@
 *__pycache__*
 db.sqlite3
 .env*
+telecom_key_pair
+.terraform
+.terraform.tfstate.lock.info
