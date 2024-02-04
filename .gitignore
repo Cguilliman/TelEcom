@@ -5,3 +5,5 @@ db.sqlite3
 telecom_key_pair
 .terraform
 .terraform.tfstate.lock.info
+*.tfstate
+*.tfstate.backup

@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 import environ
 
@@ -87,24 +87,23 @@ WSGI_APPLICATION = "app.wsgi.application"
 if env.str("DATABASE_NAME", None) is not None:
     DATABASES = {
         # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': env.str("DATABASE_NAME"),
-            'USER': env.str("DATABASE_USER"),
-            'PASSWORD': env.str("DATABASE_PASSWORD"),
-            'HOST': env.str("DATABASE_HOST"),
-            'PORT': env.str("DATABASE_PORT"),
-            'CONN_MAX_AGE': env.int("CONN_MAX_AGE", default=0),
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": env.str("DATABASE_NAME"),
+            "USER": env.str("DATABASE_USER"),
+            "PASSWORD": env.str("DATABASE_PASSWORD"),
+            "HOST": env.str("DATABASE_HOST"),
+            "PORT": env.str("DATABASE_PORT"),
+            "CONN_MAX_AGE": env.int("CONN_MAX_AGE", default=0),
         }
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         }
     }
-
 
 
 # Password validation
@@ -146,5 +145,5 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATIC_URL = '/staticfiles/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/staticfiles/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")

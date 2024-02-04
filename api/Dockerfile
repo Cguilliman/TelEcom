@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.11.6
 
 RUN pip install "poetry==1.1.13"
 

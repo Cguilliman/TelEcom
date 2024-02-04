@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from ..models import Asset, Attribute, AttributeValue, Catalog
 from apps.catalog.contrig.catalog import send_catalog_update
+from ..models import Asset, Attribute, AttributeValue, Catalog
 
 
 class CatalogSerializer(serializers.ModelSerializer):

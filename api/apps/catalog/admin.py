@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Catalog, Attribute, AttributeValue, Asset
+from .models import Asset, Attribute, AttributeValue, Catalog
 
 
 admin.site.register(Catalog)

@@ -1,7 +1,7 @@
-from django.conf import settings
+from kafka.producer import KafkaProducer
 from rest_framework.serializers import ModelSerializer
 
-from kafka.producer import KafkaProducer
+from django.conf import settings
 
 from apps.catalog.models import Catalog
 
@@ -10,7 +10,6 @@ producer = KafkaProducer(**settings.KAFKA_CONFIGS)
 
 
 class CatalogSerializer(ModelSerializer):
-
     class Meta:
         model = Catalog
         fields = "__all__"

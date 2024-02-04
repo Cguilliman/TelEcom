@@ -38,7 +38,7 @@ def deploy(cluster, service, image, container_name):
         networkMode="awsvpc",
         requiresCompatibilities=["FARGATE"],
         executionRoleArn="ecs_task_execution_role_prod",
-        taskRoleArn="ecs_task_execution_role_prod"
+        taskRoleArn="ecs_task_execution_role_prod",
     )
     new_task_arn = response["taskDefinition"]["taskDefinitionArn"]
     print(f"New task definition ARN: {new_task_arn}")
@@ -46,7 +46,9 @@ def deploy(cluster, service, image, container_name):
     # Update the service with the new task definition
     print("Updating ECS service with new task definition...")
     client.update_service(
-        cluster=cluster, service=service, taskDefinition=new_task_arn,
+        cluster=cluster,
+        service=service,
+        taskDefinition=new_task_arn,
     )
     print("Service updated!")
 
